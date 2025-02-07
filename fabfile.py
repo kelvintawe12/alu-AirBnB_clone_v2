@@ -15,3 +15,4 @@ def do_pack(c):
     c.run(f"tar -cvzf {archive_path} web_static")
     
     return archive_path if os.path.exists(archive_path) else None
+print("Packaging web_static")
