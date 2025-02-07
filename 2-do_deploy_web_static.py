@@ -7,6 +7,23 @@ env.hosts = ['75.101.223.254', '54.236.22.76']  # Replace with the correct IPs i
 env.user = 'ubuntu'  # Replace with your username if it's different
 
 def do_deploy(archive_path):
+    """
+    Deploys the archive to the web servers.
+    Args:
+        archive_path (str): The path to the archive file to be deployed.
+    Returns:
+        bool: True if the deployment was successful, False otherwise.
+    The function performs the following steps:
+    1. Checks if the archive file exists.
+    2. Uploads the archive to the /tmp directory on the web server.
+    3. Extracts the archive to a target directory.
+    4. Deletes the archive from the /tmp directory.
+    5. Moves the extracted content to the correct directory.
+    6. Removes the now unnecessary directory.
+    7. Removes the current symbolic link.
+    8. Creates a new symbolic link pointing to the new release.
+    If any step fails, the function prints an error message and returns False.
+    """
     """Deploys the archive to the web servers."""
     
     if not os.path.exists(archive_path):
